@@ -1,0 +1,36 @@
+class Solution {
+    
+    public int[] twoSum(int[] nums, int target) {
+        List<Integer> ans = new ArrayList<>();
+        int i=0; 
+        int j=nums.length -1;
+        int n1 = -1;
+        int n2 = -1;
+        int [] a = new int[nums.length];
+        for( i=0; i< nums.length; i++)
+            a[i] = nums[i];
+        
+        Arrays.sort(a);
+        while(i<j){
+            if((a[i] + a[j] ) == target){
+                n1 = a[i];
+                n2 = a[j];
+                break;
+            }else if((a[i] + a[j] ) > target)
+                j--;
+            else
+                i++;
+        }
+        
+        for( i=0; i< nums.length; i++){
+            if(nums[i] == n1) 
+                ans.add(i);
+            else if(nums[i] == n2)
+                ans.add(i);
+        }
+        int[] ab = new int[2];
+        for(i=0; i< ans.size(); i++)
+            ab[i] = ans.get(i).intValue();
+        return ab;
+    }
+}
