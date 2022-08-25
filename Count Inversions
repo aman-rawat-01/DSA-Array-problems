@@ -44,10 +44,8 @@ public class Solution {
         }
         return inv_count;
     }
-    
 
-
-    
+    //we need a temp array to store the values as well in merge sort
     public static long getInversions(long arr[], int n) {
         // Write your code here.
         long[] t = new long[n];
