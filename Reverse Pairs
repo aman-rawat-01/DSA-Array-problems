@@ -1,0 +1,62 @@
+class Solution {
+    
+    public int merge(int[] a, int l, int m, int h){
+        
+        int i = l; 
+        int j = m+1;
+        int count = 0;
+        List<Integer> list = new ArrayList<>();
+        
+        //logic
+        for(i=l; i <= m; i++){
+            while(j<=h && a[i] >  (2 * (long)a[j])){
+                j++;
+            }
+            count += j - (m +1);
+        }
+        
+        int left = l; 
+        int right = m+1;
+        
+        while(left <= m && right <=h){
+            if(a[left] <= a[right])
+                list.add(a[left++]);
+            else
+                list.add(a[right++]);
+        }
+        
+        while(left <= m)
+            list.add(a[left++]);
+        
+        while( right <=h)
+            list.add(a[right++]);
+        
+        for(i=l; i<=h; i++)
+            a[i] = list.get(i-l);
+        
+        return count;
+        
+    }
+    
+    public int mergeSort(int[] a, int l, int h){
+        int count = 0;
+        if(l < h){
+            int m = (l + h)/2;
+            
+            count += mergeSort(a,l,m);
+            count += mergeSort(a,m+1,h);
+            count += merge(a,l,m,h);
+            
+        }
+        
+        return count;
+    }
+    
+    public int reversePairs(int[] nums) {
+        int n = nums.length;
+       
+        int count = mergeSort(nums, 0, n-1);
+        return count;
+        
+    }
+}
