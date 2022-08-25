@@ -1,0 +1,27 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        
+        int i = n-2;
+        //find an element from back of the array such that nums[i] < nums[i+1]
+        while(i>=0 && nums[i]>=nums[i+1]){
+            i--;
+        }
+        
+        // if element is found, the find another element from back of the array such that it is greater than the found element
+        // and swap them
+        if(i>=0){
+            int j = n-1;
+
+            while(j>=0 && nums[i]>= nums[j])
+                j--;
+            //swap
+            int p = nums[i];
+            nums[i] = nums[j];
+            nums[j] = p;
+        }
+        
+        //after swapping, sort all the elements rom i+1 index        
+        Arrays.sort(nums, i+1, n);
+    }
+}
