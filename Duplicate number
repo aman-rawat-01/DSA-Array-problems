@@ -1,3 +1,4 @@
+//work for only positive elements
 class Solution {
     public int findDuplicate(int[] nums) {
      
@@ -11,7 +12,7 @@ class Solution {
                 dupli = index;
                 break;
             }
-
+            
             nums[index] *= -1; 
         }
 
