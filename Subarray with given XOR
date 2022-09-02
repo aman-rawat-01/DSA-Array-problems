@@ -1,0 +1,19 @@
+public class Solution {
+    public int solve(int[] A, int B) {
+       
+        int max = 0;
+        
+        for(int i=0; i<A.length; i++){
+             int xor = 0;
+            for(int j=i; j<A.length; j++){
+                xor = xor ^ A[j];
+                
+                if(xor == B)
+                    max++;
+            }
+        }
+        
+        return max;
+        
+    }
+}
